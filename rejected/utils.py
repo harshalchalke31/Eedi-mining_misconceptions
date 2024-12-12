@@ -66,23 +66,13 @@ def save_data(new_queries, documents, output_file="data.json"):
         data = {'texts': new_queries + documents}
         f.write(json.dumps(data))
 
-
-
 def load_qwen_with_lora(base_model_path, lora_path):
     """
     Loads the Qwen model with LoRA integration.
-
-    Args:
-        base_model_path (str): Hugging Face model ID for the base Qwen model.
-        lora_path (str): Hugging Face model ID or local path for the LoRA weights.
-
-    Returns:
-        model: Qwen model with LoRA integration.
-        tokenizer: Tokenizer for the Qwen model.
     """
-    # Load base model and tokenizer
-    model = AutoModelForCausalLM.from_pretrained(base_model_path, torch_dtype=torch.float16)
-    tokenizer = AutoTokenizer.from_pretrained(base_model_path)
+    # Load base model and tokenizer with device_map and torch_dtype to save memory
+    model = AutoModelForCausalLM.from_pretrained(base_model_path, torch_dtype=torch.float16, device_map="auto")
+    tokenizer = AutoTokenizer.from_pretrained(base_model_path, trust_remote_code=True)
 
     # Integrate LoRA weights
     model = PeftModel.from_pretrained(model, lora_path)
