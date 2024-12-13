@@ -11,10 +11,12 @@ This project aims to mine misconceptions in mathematics using various NLP techni
 ## Data Folder
 The `data/` folder contains relevant data files required for the project. Make sure to keep the directory structure as it is for successful execution of the code.
 
+## GitHub Repository
+Access the project repository at: [Eedi-mining_misconceptions](https://github.com/harshalchalke31/Eedi-mining_misconceptions/)
+
 ## Installation
 Before running any code files, install the required dependencies using:
 ```bash
 pip install -r requirements.txt
 
-## GitHub Repository
-Access the project repository at: [Eedi-mining_misconceptions](https://github.com/harshalchalke31/Eedi-mining_misconceptions/)
+
